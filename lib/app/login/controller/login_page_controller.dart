@@ -1,4 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_community_app/app/common/app_pages.dart';
+import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:flutter_community_app/app/common/logger.dart';
+import 'package:flutter_community_app/app/common/ui/common_snackbar.dart';
+import 'package:flutter_community_app/data/dto/response/users/users_dto.dart';
 import 'package:flutter_community_app/data/repositories/users_api_repo_impl.dart';
 import 'package:flutter_community_app/domain/use_cases/users_api_usecase.dart';
 import 'package:get/get.dart';
@@ -8,15 +13,54 @@ class LoginPageController extends GetxController {
 
   final UsersApiUseCase usersApiUseCase =
   UsersApiUseCase(UsersApiRepositoryImpl());
+  final TextEditingController emailFieldController = TextEditingController();
+  List<UsersDto> userList = [];
 
   @override
-  void onInit() async {
-    super.onInit();
+  void onReady() async {
+    super.onReady();
     final users = await usersApiUseCase.getUsers();
     users.when(success: (resp) {
-      logger.d(resp);
+      if (resp.isNotEmpty) {
+        userList = resp;
+      }
     }, failure: (error) {
       logger.d(error);
     });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    emailFieldController.dispose();
+  }
+
+  void onLoginButtonTapped() {
+    String email = emailFieldController.text.trim();
+
+    if (email.isEmpty) {
+      CommonSnackBar.show(R.string.emailFieldEmptyError);
+    } else if (!GetUtils.isEmail(email)) {
+      CommonSnackBar.show(R.string.emailInvalidError);
+    } else if (!checkEmailSignUp(email)) {
+      CommonSnackBar.show(R.string.emailNoSignUpError);
+    } else {
+      Get.offNamed(AppRoutes.rootPage);
+    }
+  }
+
+  bool checkEmailSignUp(String email) {
+    for (UsersDto user in userList) {
+      if (user.email == email) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void onEmailInputButtonTapped() {
+    if (userList.isNotEmpty) {
+      emailFieldController.text = userList[0].email;
+    }
   }
 }

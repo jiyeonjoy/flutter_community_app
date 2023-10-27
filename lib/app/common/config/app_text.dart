@@ -13,4 +13,8 @@ class AppTexts {
   final String login = '로그인';
   final String loginPage = '로그인 페이지';
   final String loginTextFieldHint = '이메일을 입력해 주세요.';
+  final String emailFieldEmptyError = '이메일을 입력해 주세요.';
+  final String emailInvalidError = '이메일 형식이 올바르지 않습니다.';
+  final String emailNoSignUpError = '가입 되지 않은 이메일입니다.';
+  final String emailInputButtonText = '이메일 자동 입력';
 }

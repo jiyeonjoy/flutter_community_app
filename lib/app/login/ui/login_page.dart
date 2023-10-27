@@ -22,12 +22,22 @@ class LoginPage extends GetView<LoginPageController> {
         children: [
           const Spacer(),
           CommonTextField(
+            controller: LoginPageController.to.emailFieldController,
             hintText: R.string.loginTextFieldHint,
             keyboardType: TextInputType.emailAddress,
+          ),
+          const SizedBox(height: 10),
+          CommonButton(
+            R.string.emailInputButtonText,
+            textStyle: textStyleNormal(R.color.white, 15),
+            onPressed: LoginPageController.to.onEmailInputButtonTapped,
+            fillColor: R.color.color_3D8BFF,
+            height: 25,
           ),
           const Spacer(),
           CommonButton(
             R.string.login,
+            onPressed: LoginPageController.to.onLoginButtonTapped,
           ),
           const SizedBox(height: 20),
         ],
