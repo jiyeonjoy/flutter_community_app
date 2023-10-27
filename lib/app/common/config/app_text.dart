@@ -9,7 +9,7 @@ class AppTexts {
   final String buttonNo = '아니요';
 
   final String list = '리스트';
-  final String myList = '내 리스트';
+  final String my = '내 정보';
   final String login = '로그인';
   final String logout = '로그아웃';
   final String loginPage = '로그인 페이지';

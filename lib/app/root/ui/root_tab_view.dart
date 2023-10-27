@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/list/ui/list_page.dart';
-import 'package:flutter_community_app/app/my_list/ui/my_list_page.dart';
+import 'package:flutter_community_app/app/my/ui/my_page.dart';
 import 'package:flutter_community_app/app/root/controller/root_page_controller.dart';
 
 class RootTabView extends StatelessWidget {
@@ -12,8 +12,8 @@ class RootTabView extends StatelessWidget {
     switch(rootTab) {
       case RootTab.list:
         return const ListPage();
-      case RootTab.myList:
-        return const MyListPage();
+      case RootTab.my:
+        return const MyPage();
     }
   }
 }

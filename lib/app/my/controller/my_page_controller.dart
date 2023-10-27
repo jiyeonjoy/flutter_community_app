@@ -2,8 +2,8 @@ import 'package:flutter_community_app/app/common/app_pages.dart';
 import 'package:flutter_community_app/utils/helper/preference_helper.dart';
 import 'package:get/get.dart';
 
-class MyListPageController extends GetxController {
-  static MyListPageController get to => Get.find();
+class MyPageController extends GetxController {
+  static MyPageController get to => Get.find();
 
   Rx<String> myEmail = ''.obs;
   Rx<int> myId = 0.obs;

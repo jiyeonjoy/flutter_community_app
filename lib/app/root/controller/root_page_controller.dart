@@ -15,7 +15,7 @@ class RootPageController extends GetxController {
 
 enum RootTab {
   list(0),
-  myList(1);
+  my(1);
 
   final int id;
   const RootTab(this.id);
@@ -39,7 +39,7 @@ extension RootTabExt on RootTab {
           color: R.color.black.withOpacity(0.5),
           size: 24.0,
         );
-      case RootTab.myList:
+      case RootTab.my:
         return Icon(
           Icons.person_2_outlined,
           color: R.color.black.withOpacity(0.5),
@@ -56,7 +56,7 @@ extension RootTabExt on RootTab {
           color: R.color.black,
           size: 24.0,
         );
-      case RootTab.myList:
+      case RootTab.my:
         return Icon(
           Icons.person_2,
           color: R.color.black,
@@ -69,8 +69,8 @@ extension RootTabExt on RootTab {
     switch (this) {
       case RootTab.list:
         return R.string.list;
-      case RootTab.myList:
-        return R.string.myList;
+      case RootTab.my:
+        return R.string.my;
     }
   }
 }

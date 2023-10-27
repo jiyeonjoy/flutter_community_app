@@ -1,7 +1,7 @@
 import 'package:flutter_community_app/app/list/binding/list_page_binding.dart';
 import 'package:flutter_community_app/app/login/binding/login_page_binding.dart';
 import 'package:flutter_community_app/app/login/ui/login_page.dart';
-import 'package:flutter_community_app/app/my_list/binding/my_list_page_binding.dart';
+import 'package:flutter_community_app/app/my/binding/my_page_binding.dart';
 import 'package:flutter_community_app/app/root/binding/root_page_binding.dart';
 import 'package:flutter_community_app/app/root/ui/root_page.dart';
 import 'package:flutter_community_app/app/splash/binding/splash_page_binding.dart';
@@ -26,7 +26,7 @@ abstract class AppPages {
       bindings: [
         RootPageBinding(),
         ListPageBinding(),
-        MyListPageBinding(),
+        MyPageBinding(),
       ],
       transition: Transition.fadeIn,
     ),
