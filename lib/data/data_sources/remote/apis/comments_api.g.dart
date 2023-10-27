@@ -19,9 +19,10 @@ class _CommentsApi implements CommentsApi {
   String? baseUrl;
 
   @override
-  Future<List<CommentsDto>> getComments(int q) async {
+  Future<List<CommentsDto>> getComments({int? postId}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'postId': q};
+    final queryParameters = <String, dynamic>{r'postId': postId};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

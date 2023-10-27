@@ -9,7 +9,7 @@ abstract class CommentsApi {
   factory CommentsApi(Dio dio, {String baseUrl}) = _CommentsApi;
 
   @GET('/comments')
-  Future<List<CommentsDto>> getComments(
-    @Query('postId') int postId,
-  );
+  Future<List<CommentsDto>> getComments({
+    @Query('postId') int? postId,
+  });
 }

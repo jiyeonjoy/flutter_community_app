@@ -6,9 +6,10 @@ import 'package:flutter_community_app/domain/repositories/comments_api_repositor
 
 class CommentsApiRepositoryImpl implements CommentsApiRepository {
   @override
-  Future<ApiResult<List<CommentsDto>>> getComments(int postId) async {
+  Future<ApiResult<List<CommentsDto>>> getComments({int? postId}) async {
     try {
-      var response = await CommunityHttpClient().commentsApi.getComments(postId);
+      var response =
+          await CommunityHttpClient().commentsApi.getComments(postId: postId);
 
       return ApiResult.success(data: response);
     } catch (e) {

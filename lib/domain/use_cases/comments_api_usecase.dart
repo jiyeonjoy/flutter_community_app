@@ -7,7 +7,7 @@ class CommentsApiUseCase {
 
   CommentsApiUseCase(this.repository);
 
-  Future<ApiResult<List<CommentsDto>>> getComments(int postId) {
-    return repository.getComments(postId);
+  Future<ApiResult<List<CommentsDto>>> getComments({int? postId}) {
+    return repository.getComments(postId: postId);
   }
 }
