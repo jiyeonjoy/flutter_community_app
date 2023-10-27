@@ -1,3 +1,5 @@
+import 'package:flutter_community_app/app/detail/binding/detail_page_binding.dart';
+import 'package:flutter_community_app/app/detail/ui/detail_page.dart';
 import 'package:flutter_community_app/app/list/binding/list_page_binding.dart';
 import 'package:flutter_community_app/app/login/binding/login_page_binding.dart';
 import 'package:flutter_community_app/app/login/ui/login_page.dart';
@@ -34,6 +36,12 @@ abstract class AppPages {
       name: AppRoutes.loginPage,
       page: () => const LoginPage(),
       binding: LoginPageBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: AppRoutes.detailPage,
+      page: () => const DetailPage(),
+      binding: DetailPageBinding(),
       transition: Transition.fadeIn,
     ),
   ];
