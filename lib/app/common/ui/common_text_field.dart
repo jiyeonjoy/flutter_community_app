@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
 
-class CustomTextField extends StatelessWidget {
+class CommonTextField extends StatelessWidget {
   final TextEditingController? controller;
   final FocusNode? focusNode;
 
@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
   final GestureTapCallback? onTap;
   final bool addWonUnit;
 
-  const CustomTextField({
+  const CommonTextField({
     Key? key,
     this.controller,
     this.focusNode,

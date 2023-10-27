@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:get/get.dart';
 
-class CustomSnackBar {
+class CommonSnackBar {
   static DateTime? showSnackBarTime;
 
   static void show(
