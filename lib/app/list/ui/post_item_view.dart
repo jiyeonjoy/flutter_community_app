@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/common/app_pages.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
+import 'package:flutter_community_app/app/common/constants.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
 import 'package:flutter_community_app/app/common/ui/touch_well.dart';
 import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
@@ -40,7 +41,8 @@ class PostItemView extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.toNamed(AppRoutes.detailPage);
+          Get.toNamed(AppRoutes.detailPage,
+              arguments: {AppConstants.POST_DATA: post});
         },
       ),
     );

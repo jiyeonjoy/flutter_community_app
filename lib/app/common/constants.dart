@@ -5,4 +5,6 @@ class AppConstants {
   static const HTTP_READ_TIMEOUT = 30;
 
   static const DOMAIN_URL = 'https://jsonplaceholder.typicode.com';
+
+  static const String POST_DATA = "POST_DATA";
 }
