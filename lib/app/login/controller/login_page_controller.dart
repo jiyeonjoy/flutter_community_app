@@ -6,6 +6,7 @@ import 'package:flutter_community_app/app/common/ui/common_snackbar.dart';
 import 'package:flutter_community_app/data/dto/response/users/users_dto.dart';
 import 'package:flutter_community_app/data/repositories/users_api_repo_impl.dart';
 import 'package:flutter_community_app/domain/use_cases/users_api_usecase.dart';
+import 'package:flutter_community_app/utils/helper/preference_helper.dart';
 import 'package:get/get.dart';
 
 class LoginPageController extends GetxController {
@@ -27,6 +28,11 @@ class LoginPageController extends GetxController {
     }, failure: (error) {
       logger.d(error);
     });
+
+    final userEmail = await PreferenceHelper.get<String>(PreferenceKey.userEmail);
+    if (userEmail != null) {
+      emailFieldController.text = userEmail;
+    }
   }
 
   @override
@@ -52,10 +58,16 @@ class LoginPageController extends GetxController {
   bool checkEmailSignUp(String email) {
     for (UsersDto user in userList) {
       if (user.email == email) {
+        saveUserData(user.email, user.id);
         return true;
       }
     }
     return false;
+  }
+
+  void saveUserData(String userEmail, int userId) {
+    PreferenceHelper.set(PreferenceKey.userEmail, userEmail);
+    PreferenceHelper.set(PreferenceKey.userId, userId);
   }
 
   void onEmailInputButtonTapped() {

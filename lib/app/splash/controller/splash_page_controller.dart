@@ -1,4 +1,5 @@
 import 'package:flutter_community_app/app/common/app_pages.dart';
+import 'package:flutter_community_app/utils/helper/preference_helper.dart';
 import 'package:get/get.dart';
 
 class SplashPageController extends GetxController {
@@ -12,6 +13,11 @@ class SplashPageController extends GetxController {
 
   void performAppInitialization() async {
     await Future.delayed(const Duration(milliseconds: 200));
-    Get.offNamed(AppRoutes.loginPage);
+    final userId = await PreferenceHelper.get<int>(PreferenceKey.userId);
+    if (userId == null) {
+      Get.offNamed(AppRoutes.loginPage);
+    } else {
+      Get.offNamed(AppRoutes.rootPage);
+    }
   }
 }

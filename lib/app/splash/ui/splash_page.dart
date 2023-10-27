@@ -8,7 +8,7 @@ class SplashPage extends GetView<SplashPageController> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: Center(
         child: Text(
           'Splash Page',

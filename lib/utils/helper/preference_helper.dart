@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum PreferenceKey {
-  userEmail('userEmail');
+  userEmail('userEmail'),
+  userId('userId');
 
   final String key;
 
