@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_community_app/app/common/constants.dart';
+import 'package:flutter_community_app/data/data_sources/remote/apis/comments_api.dart';
+import 'package:flutter_community_app/data/data_sources/remote/apis/posts_api.dart';
 import 'package:flutter_community_app/data/data_sources/remote/apis/users_api.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -39,5 +41,15 @@ class CommunityHttpClient {
   UsersApi get usersApi => UsersApi(
       dio,
       baseUrl: AppConstants.DOMAIN_URL,
+  );
+
+  PostsApi get postsApi => PostsApi(
+    dio,
+    baseUrl: AppConstants.DOMAIN_URL,
+  );
+
+  CommentsApi get commentsApi => CommentsApi(
+    dio,
+    baseUrl: AppConstants.DOMAIN_URL,
   );
 }

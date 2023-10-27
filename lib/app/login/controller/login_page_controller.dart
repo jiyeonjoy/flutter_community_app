@@ -13,7 +13,7 @@ class LoginPageController extends GetxController {
   static LoginPageController get to => Get.find();
 
   final UsersApiUseCase usersApiUseCase =
-  UsersApiUseCase(UsersApiRepositoryImpl());
+      UsersApiUseCase(UsersApiRepositoryImpl());
   final TextEditingController emailFieldController = TextEditingController();
   List<UsersDto> userList = [];
 
