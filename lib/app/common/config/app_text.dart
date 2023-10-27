@@ -10,4 +10,6 @@ class AppTexts {
 
   final String list = '리스트';
   final String myList = '내 리스트';
+  final String login = '로그인';
+  final String loginPage = '로그인 페이지';
 }
