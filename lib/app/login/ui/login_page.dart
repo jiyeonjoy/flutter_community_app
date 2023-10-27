@@ -8,7 +8,7 @@ class LoginPage extends GetView<LoginPageController> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.yellow,
       body: Center(
         child: Text(
           'Login Page',

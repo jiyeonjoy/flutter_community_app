@@ -12,6 +12,6 @@ class SplashPageController extends GetxController {
 
   void performAppInitialization() async {
     await Future.delayed(const Duration(milliseconds: 200));
-    Get.offNamed(AppRoutes.rootPage);
+    Get.offNamed(AppRoutes.loginPage);
   }
 }
