@@ -23,4 +23,5 @@ class AppColors {
   final Color color_0064FF = const Color(0xFF0064FF);
   final Color color_FDE8E4 = const Color(0xFFFDE8E4);
   final Color color_3D8BFF = const Color(0xFF3D8BFF);
+  final Color color_F91E30 = const Color(0xFFF91E30);
 }

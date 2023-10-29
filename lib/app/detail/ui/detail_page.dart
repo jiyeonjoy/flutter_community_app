@@ -14,6 +14,21 @@ class DetailPage extends GetView<DetailPageController> {
       backgroundColor: Colors.white,
       appBar: AppBarView(
         title: R.string.detailPage,
+        actions: [
+          Obx(() {
+            bool isMyPost = controller.isMyPost.value;
+            if (isMyPost) {
+              return IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.delete,
+                    color: R.color.color_F91E30,
+                  ));
+            } else {
+              return const SizedBox.shrink();
+            }
+          })
+        ],
       ),
       body: SafeArea(
         child: GetBuilder<DetailPageController>(
