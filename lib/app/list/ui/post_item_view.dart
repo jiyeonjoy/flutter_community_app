@@ -4,6 +4,7 @@ import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:flutter_community_app/app/common/constants.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
 import 'package:flutter_community_app/app/common/ui/touch_well.dart';
+import 'package:flutter_community_app/app/list/controller/list_page_controller.dart';
 import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
 import 'package:flutter_community_app/data/dto/response/posts/posts_dto.dart';
 import 'package:get/get.dart';
@@ -40,9 +41,12 @@ class PostItemView extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          Get.toNamed(AppRoutes.detailPage,
+        onTap: () async {
+          final result = await Get.toNamed(AppRoutes.detailPage,
               arguments: {AppConstants.POST_DATA: post});
+          if (result == true) {
+            ListPageController.to.loadPostList();
+          }
         },
       ),
     );
