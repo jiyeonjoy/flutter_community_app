@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
+import 'package:flutter_community_app/app/common/ui/common_dialog.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
+import 'package:flutter_community_app/app/detail/controller/detail_page_controller.dart';
 import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
 
 class CommentItemView extends StatelessWidget {
@@ -20,11 +22,41 @@ class CommentItemView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('id: ${comment.email}'),
-          const SizedBox(height: 5),
-          Text('name: ${comment.name}'),
-          const SizedBox(height: 5),
-          Text('email: ${comment.email}'),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('id: ${comment.id}'),
+                    const SizedBox(height: 5),
+                    Text('name: ${comment.name}'),
+                    const SizedBox(height: 5),
+                    Text('email: ${comment.email}'),
+                  ],
+                ),
+              ),
+              if (DetailPageController.to.checkMyComment(comment.email))...[
+                IconButton(
+                  onPressed: () {
+                    simpleDialog(
+                        titleText: R.string.postDeletePopupText,
+                        leftButtonText: R.string.buttonNo,
+                        rightButtonText: R.string.buttonYes,
+                        onRightBtnPressed: () {
+                          DetailPageController.to.deleteMyComment();
+                        }
+                    );
+                  },
+                  icon: Icon(
+                    Icons.delete,
+                    color: R.color.color_F91E30,
+                  ),
+                ),
+              ]
+            ],
+          ),
           const SizedBox(height: 5),
           Text(
             comment.body,

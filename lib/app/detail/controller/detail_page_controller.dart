@@ -8,10 +8,12 @@ class DetailPageController extends GetxController {
   static DetailPageController get to => Get.find();
   (PostsDto, List<CommentsDto>)? post;
   Rx<bool> isMyPost = false.obs;
+  String? myEmail;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    myEmail = await PreferenceHelper.get<String>(PreferenceKey.userEmail);
     post = Get.arguments?[AppConstants.POST_DATA];
     update();
     checkMyPost();
@@ -25,6 +27,14 @@ class DetailPageController extends GetxController {
   }
 
   void deleteMyPost() {
+    // 삭제 기능 구현..
+  }
+
+  bool checkMyComment(String email) {
+    return myEmail == email;
+  }
+
+  void deleteMyComment() {
     // 삭제 기능 구현..
   }
 }
