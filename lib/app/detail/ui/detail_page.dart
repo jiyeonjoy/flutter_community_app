@@ -40,7 +40,14 @@ class DetailPage extends GetView<DetailPageController> {
                   const SizedBox(height: 20),
                   Text('userId: ${post?.$1.userId}'),
                   const SizedBox(height: 10),
-                  Text('${post?.$1.body}'),
+                  Container(
+                      padding: edgeInsets(all: 12),
+                      decoration: BoxDecoration(
+                        color: R.color.color_EEF0F3,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text('${post?.$1.body}')
+                  ),
                   const SizedBox(height: 20),
                   Text('comments (${post?.$2.length ?? 0})'),
                   const SizedBox(height: 10),
