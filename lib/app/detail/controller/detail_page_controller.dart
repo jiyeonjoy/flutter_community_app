@@ -23,4 +23,8 @@ class DetailPageController extends GetxController {
       isMyPost.value = true;
     }
   }
+
+  void deleteMyPost() {
+    // 삭제 기능 구현..
+  }
 }

@@ -19,4 +19,5 @@ class AppTexts {
   final String emailNoSignUpError = '가입 되지 않은 이메일입니다.';
   final String emailInputButtonText = '이메일 자동 입력';
   final String detailPage = '상세 페이지';
+  final String postDeletePopupText = '게시글을 삭제하시겠습니까?';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:flutter_community_app/app/common/ui/app_bar_view.dart';
+import 'package:flutter_community_app/app/common/ui/common_dialog.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
 import 'package:flutter_community_app/app/detail/controller/detail_page_controller.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,16 @@ class DetailPage extends GetView<DetailPageController> {
             bool isMyPost = controller.isMyPost.value;
             if (isMyPost) {
               return IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    simpleDialog(
+                        titleText: R.string.postDeletePopupText,
+                        leftButtonText: R.string.buttonNo,
+                        rightButtonText: R.string.buttonYes,
+                        onRightBtnPressed: () {
+                         controller.deleteMyPost();
+                        }
+                    );
+                  },
                   icon: Icon(
                     Icons.delete,
                     color: R.color.color_F91E30,
