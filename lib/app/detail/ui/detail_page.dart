@@ -4,6 +4,8 @@ import 'package:flutter_community_app/app/common/ui/app_bar_view.dart';
 import 'package:flutter_community_app/app/common/ui/common_dialog.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
 import 'package:flutter_community_app/app/detail/controller/detail_page_controller.dart';
+import 'package:flutter_community_app/app/detail/ui/comment_item_view.dart';
+import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
 import 'package:get/get.dart';
 
 class DetailPage extends GetView<DetailPageController> {
@@ -82,29 +84,11 @@ class DetailPage extends GetView<DetailPageController> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: R.color.black, width: 2),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          margin: edgeInsets(bottom: 12),
-                          padding: edgeInsets(all: 12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('id: ${post?.$2[index].email}'),
-                              const SizedBox(height: 5),
-                              Text('name: ${post?.$2[index].name}'),
-                              const SizedBox(height: 5),
-                              Text('email: ${post?.$2[index].email}'),
-                              const SizedBox(height: 5),
-                              Text(
-                                '${post?.$2[index].body}',
-                                style: textStyleBlack600(18),
-                              ),
-                            ],
-                          ),
-                        );
+                        CommentsDto? comment = post?.$2[index];
+                        if (comment == null) {
+                          return const SizedBox.shrink();
+                        }
+                        return CommentItemView(comment);
                       },
                       childCount: post?.$2.length ?? 0,
                     ),
