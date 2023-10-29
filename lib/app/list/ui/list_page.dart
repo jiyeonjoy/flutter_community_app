@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:flutter_community_app/app/list/controller/list_page_controller.dart';
 import 'package:flutter_community_app/app/list/ui/post_item_view.dart';
 import 'package:get/get.dart';
@@ -13,13 +14,21 @@ class ListPage extends GetView<ListPageController> {
       body: SafeArea(
         child: Obx(() {
           final list = ListPageController.to.postList;
-
-          return ListView.builder(
-            itemBuilder: (_, index) {
-              return PostItemView(list[index]);
-            },
-            itemCount: list.length,
-          );
+          if (list.isEmpty) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: R.color.black,
+                strokeWidth: 3,
+              ),
+            );
+          } else {
+            return ListView.builder(
+              itemBuilder: (_, index) {
+                return PostItemView(list[index]);
+              },
+              itemCount: list.length,
+            );
+          }
         }),
       ),
     );
