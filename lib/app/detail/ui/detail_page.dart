@@ -42,33 +42,36 @@ class DetailPage extends GetView<DetailPageController> {
               );
             } else {
               final post = controller.post;
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  Text(
-                    '${post?.$1.title}',
-                    style: textStyleBlack600(20),
-                    textAlign: TextAlign.center,
+              return CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Text(
+                      '${post?.$1.title}',
+                      style: textStyleBlack600(20),
+                      textAlign: TextAlign.center,
+                    ).marginOnly(top: 20),
                   ),
-                  const SizedBox(height: 20),
-                  Text('userId: ${post?.$1.userId}'),
-                  const SizedBox(height: 10),
-                  Container(
-                      padding: edgeInsets(all: 12),
-                      decoration: BoxDecoration(
-                        color: R.color.color_EEF0F3,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text('${post?.$1.body}')
+                  SliverToBoxAdapter(
+                    child: Text('userId: ${post?.$1.userId}')
+                        .marginOnly(top: 20, bottom: 10),
                   ),
-                  const SizedBox(height: 20),
-                  Text('comments (${post?.$2.length ?? 0})'),
-                  const SizedBox(height: 10),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: (_, index) {
+                  SliverToBoxAdapter(
+                    child: Container(
+                        margin: edgeInsets(bottom: 20),
+                        padding: edgeInsets(all: 12),
+                        decoration: BoxDecoration(
+                          color: R.color.color_EEF0F3,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text('${post?.$1.body}')),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Text('comments (${post?.$2.length ?? 0})')
+                        .marginOnly(bottom: 10),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
                         return Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: R.color.black, width: 2),
@@ -93,9 +96,9 @@ class DetailPage extends GetView<DetailPageController> {
                           ),
                         );
                       },
-                      itemCount: post?.$2.length ?? 0,
+                      childCount: post?.$2.length ?? 0,
                     ),
-                  ),
+                  )
                 ],
               ).marginSymmetric(horizontal: 24);
             }
