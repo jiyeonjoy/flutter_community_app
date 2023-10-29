@@ -20,6 +20,23 @@ class _CommunityAppState extends State<CommunityApp> {
       getPages: AppPages.pages,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: NoEffectBehavior(),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
+  }
+}
+
+class NoEffectBehavior extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context,
+      Widget child,
+      ScrollableDetails details,
+      ) {
+    return child;
   }
 }
