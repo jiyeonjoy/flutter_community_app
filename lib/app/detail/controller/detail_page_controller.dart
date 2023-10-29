@@ -1,5 +1,7 @@
+import 'package:flutter_community_app/app/common/config/r.dart';
 import 'package:flutter_community_app/app/common/constants.dart';
 import 'package:flutter_community_app/app/common/logger.dart';
+import 'package:flutter_community_app/app/common/ui/common_snackbar.dart';
 import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
 import 'package:flutter_community_app/data/dto/response/posts/posts_dto.dart';
 import 'package:flutter_community_app/data/repositories/posts_api_repo_impl.dart';
@@ -49,6 +51,6 @@ class DetailPageController extends GetxController {
   }
 
   void deleteMyComment() {
-    // 삭제 기능 구현..
+    CommonSnackBar.show(R.string.commentsCannotDeleted);
   }
 }

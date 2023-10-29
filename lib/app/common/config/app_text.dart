@@ -20,4 +20,5 @@ class AppTexts {
   final String emailInputButtonText = '이메일 자동 입력';
   final String detailPage = '상세 페이지';
   final String postDeletePopupText = '게시글을 삭제하시겠습니까?';
+  final String commentsCannotDeleted = '댓글은 삭제가 안됩니다..';
 }

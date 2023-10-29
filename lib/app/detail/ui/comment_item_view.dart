@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_community_app/app/common/config/r.dart';
-import 'package:flutter_community_app/app/common/ui/common_dialog.dart';
 import 'package:flutter_community_app/app/common/ui/edge_insets.dart';
 import 'package:flutter_community_app/app/detail/controller/detail_page_controller.dart';
 import 'package:flutter_community_app/data/dto/response/comments/comments_dto.dart';
@@ -40,18 +39,11 @@ class CommentItemView extends StatelessWidget {
               if (DetailPageController.to.checkMyComment(comment.email))...[
                 IconButton(
                   onPressed: () {
-                    simpleDialog(
-                        titleText: R.string.postDeletePopupText,
-                        leftButtonText: R.string.buttonNo,
-                        rightButtonText: R.string.buttonYes,
-                        onRightBtnPressed: () {
-                          DetailPageController.to.deleteMyComment();
-                        }
-                    );
+                    DetailPageController.to.deleteMyComment();
                   },
                   icon: Icon(
                     Icons.delete,
-                    color: R.color.color_F91E30,
+                    color: R.color.color_8C9299,
                   ),
                 ),
               ]
