@@ -13,7 +13,7 @@ class ListPage extends GetView<ListPageController> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Obx(() {
-          final list = ListPageController.to.postList;
+          final list = controller.postList;
           if (list.isEmpty) {
             return Center(
               child: CircularProgressIndicator(
@@ -22,11 +22,17 @@ class ListPage extends GetView<ListPageController> {
               ),
             );
           } else {
-            return ListView.builder(
-              itemBuilder: (_, index) {
-                return PostItemView(list[index]);
+            return RefreshIndicator(
+              onRefresh: () async {
+                await Future.delayed(const Duration(milliseconds: 500));
+                controller.loadPostList();
               },
-              itemCount: list.length,
+              child: ListView.builder(
+                itemBuilder: (_, index) {
+                  return PostItemView(list[index]);
+                },
+                itemCount: list.length,
+              ),
             );
           }
         }),

@@ -18,8 +18,12 @@ class ListPageController extends GetxController {
   var postList = <(PostsDto, List<CommentsDto>)>[].obs;
 
   @override
-  void onReady() async {
+  void onReady() {
     super.onReady();
+    loadPostList();
+  }
+
+  void loadPostList() async {
     List<CommentsDto> commentList = [];
     final comments = await commentsApiUseCase.getComments();
     comments.when(success: (resp) {
@@ -34,7 +38,7 @@ class ListPageController extends GetxController {
         List<(PostsDto, List<CommentsDto>)> list = [];
         for (PostsDto post in resp) {
           List<CommentsDto> filter =
-              commentList.where((e) => e.postId == post.id).toList();
+          commentList.where((e) => e.postId == post.id).toList();
           list.add((post, filter));
         }
         postList.value = list;
